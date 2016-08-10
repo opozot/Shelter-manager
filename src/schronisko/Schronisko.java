@@ -67,9 +67,9 @@ public class Schronisko {           //everything's pubic for now
                 case 2:
                     int i = 0;
                     System.out.print("     Enter how many Animals you would like to add: ");
-                    try {
-                        i = in.nextInt();
-                    } catch (Exception e) {
+                    try {                                                                           // Problem here:/
+                        i = in.nextInt();                                                           //First time it works,
+                    } catch (Exception e) {                                                         //at next attempts sth is worng.             
                         System.out.println("    Please enter only numeric values.");
                     }
                         
