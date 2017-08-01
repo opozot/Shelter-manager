@@ -14,27 +14,52 @@ import java.util.Scanner;
  *
  * @author ASUS
  */ 
-public class Schronisko {           //everything's pubic for now
+//public class Schronisko {           //everything's public for now
+//
+//    public String type;             // the type of animal to fill the list
+//    public String removeAnimal;     //the String used when removing elements from the list
+//    public ArrayList<animal> numberOfAnimals = new ArrayList<animal>();
+//       
+//    //method for adding an animal
+//    
+//    public void addAnimal(){
+//    	animal animal = new animal();
+//    	animal.newAnimal();
+//    	numberOfAnimals.add(animal);
+//    }
+//    
+//   //Status method to see how many elements there're on the list
+//    
+//    public void Status(){       
+//        System.out.println("     Total number of animals: " + numberOfAnimals.size());
+//        for (int i=0;i<numberOfAnimals.size();i++) {
+//            System.out.println(numberOfAnimals.get(i));
+//        }
+//    }
+    
+
+public class Schronisko {           //everything's public for now
 
     public String type;             // the type of animal to fill the list
     public String removeAnimal;     //the String used when removing elements from the list
-    public ArrayList<String> numberOfAnimals = new ArrayList<>();
+    public ArrayList<animal> numberOfAnimals = new ArrayList<animal>();
     
-    public void addAnimal(String type){
-        this.type=type;
-        Scanner in = new Scanner(System.in);
-        System.out.print("     Please give the animal type: ");
-        type = in.nextLine();
-        System.out.println("     You have entered: " + type);
-        numberOfAnimals.add(type);
+    public void addAnimal(){
+		animal animal = new animal();
+		animal.newAnimal();
+    	numberOfAnimals.add(animal);
+    }
+	public void addAnimal(String type, String name, String age){
+    	numberOfAnimals.add(new animal(type, name, age));
     }
    
-    public void Status(){       //Status method to see hpw many elements there're on the list
+    public void Status(){       //Status method to see how many elements there're on the list
         System.out.println("     Total number of animals: " + numberOfAnimals.size());
         for (int i=0;i<numberOfAnimals.size();i++) {
             System.out.println(numberOfAnimals.get(i));
         }
     }
+    
     
      public static int menu(){
         System.out.println();
@@ -49,20 +74,19 @@ public class Schronisko {           //everything's pubic for now
  
         Scanner in = new Scanner(System.in);
         int menuItem = in.nextInt();
- 
         return menuItem;
     }
     
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        
         int choice = menu();
         Schronisko shelter1 = new Schronisko();                  //create a new object from my shelter class
+        
         
         while(choice!=0) {
             switch(choice){
                 case 1:
-                    shelter1.addAnimal("");
+                    shelter1.addAnimal();
                     break;
                 case 2:
                     int i = 0;
@@ -74,7 +98,7 @@ public class Schronisko {           //everything's pubic for now
                     }
                         
                     while (i>0){
-                        shelter1.addAnimal("");
+                        shelter1.addAnimal();
                         i=i-1;
                     }
                 break;
@@ -98,13 +122,11 @@ public class Schronisko {           //everything's pubic for now
                             else if(!(shelter1.numberOfAnimals.contains(shelter1.removeAnimal)));
                                 System.out.println("    There is no " + "\"" + shelter1.removeAnimal+"\"" + " on the list");
                                 }
-                                                  
-                    
-                    break;
+                        break;
                 case 4:
                     shelter1.Status();
             }   
-                    choice = menu();
+            choice = menu();
         }
         System.out.println("     ****************************************");
         System.out.println("\n     Thank you for using Shelter Manager\n\n");
